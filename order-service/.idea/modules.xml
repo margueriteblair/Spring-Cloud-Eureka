@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Microservices-Eureka.iml" filepath="$PROJECT_DIR$/Microservices-Eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eurekaservices.iml" filepath="$PROJECT_DIR$/eurekaservices.iml" />
     </modules>
   </component>
 </project>
