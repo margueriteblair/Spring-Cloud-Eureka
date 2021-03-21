@@ -1,8 +1,8 @@
 package com.margieblair.controller;
 
 
+import com.margieblair.entity.Order;
 import com.margieblair.service.OrderService;
-import main.java.com.margieblair.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

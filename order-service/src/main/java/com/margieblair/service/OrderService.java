@@ -4,7 +4,6 @@ package com.margieblair.service;
 import com.margieblair.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import main.java.com.margieblair.entity.Order;
 
 @Service
 public class OrderService {

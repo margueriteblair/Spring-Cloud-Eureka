@@ -1,4 +1,4 @@
-package main.java.com.margieblair.entity;
+package com.margieblair.entity;
 
 
 import lombok.AllArgsConstructor;
