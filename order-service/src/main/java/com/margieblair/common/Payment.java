@@ -1,5 +1,4 @@
-package com.margieblair.entity;
-
+package com.margieblair.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
