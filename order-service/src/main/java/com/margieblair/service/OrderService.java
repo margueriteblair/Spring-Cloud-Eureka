@@ -3,6 +3,7 @@ package com.margieblair.service;
 
 import com.margieblair.common.Payment;
 import com.margieblair.common.TransactionRequest;
+import com.margieblair.common.TransactionResponse;
 import com.margieblair.entity.Order;
 import com.margieblair.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,19 @@ public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public Order saveOrder(TransactionRequest request) {
+    public TransactionResponse saveOrder(TransactionRequest request) {
+        String response = "";
         Order order = request.getOrder();
         Payment payment = request.getPayment();
         payment.setOrderId(order.getId());
         payment.setAmount(order.getPrice());
         //rest call
-        return orderRepository.save(order);
+
+        Payment paymentResponse = restTemplate.postForObject("http://localhost:9193/payment/doPayment", payment, Payment.class);
+
+        response = paymentResponse.getPaymentStatus().equals("Success") ? "payment processing successful, order placed" : "there is a failure in payment api, order added to cart";
+
+        orderRepository.save(order);
+        return new TransactionResponse(order, paymentResponse.getAmount(), paymentResponse.getTransactionId(), response);
     }
 }
