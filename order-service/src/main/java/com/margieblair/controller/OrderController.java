@@ -3,6 +3,7 @@ package com.margieblair.controller;
 
 import com.margieblair.common.Payment;
 import com.margieblair.common.TransactionRequest;
+import com.margieblair.common.TransactionResponse;
 import com.margieblair.entity.Order;
 import com.margieblair.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,9 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/bookOrder")
-    public Order bookOrder(@RequestBody TransactionRequest request) {
-        Order order = request.getOrder();
-        Payment payment = request.getPayment();
-        payment.setOrderId(order.getId());
-        payment.setAmount(order.getPrice());
-        return orderService.saveOrder(order);
+    public TransactionResponse bookOrder(@RequestBody TransactionRequest request) {
+
+        return null;
         //we're going to do a rest call to a payment api and pass the order id
     }
 }
