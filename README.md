@@ -8,3 +8,8 @@ We're making two microservices in this application: an order service & a payment
 We'll add an API gateway for authorization purposes.
 
 We'll integrate an H2 database as well.
+
+Technologies:
+-Spring Boot
+-Spring Cloud
+-H2 Database
