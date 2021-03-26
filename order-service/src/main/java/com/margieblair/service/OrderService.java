@@ -19,6 +19,7 @@ public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
+    //We're conducting REST api calls from Order Service to payment service
     public TransactionResponse saveOrder(TransactionRequest request) {
         String response = "";
         Order order = request.getOrder();
@@ -27,7 +28,7 @@ public class OrderService {
         payment.setAmount(order.getPrice());
         //rest call
 
-        Payment paymentResponse = restTemplate.postForObject("http://localhost:9193/payment/doPayment", payment, Payment.class);
+        Payment paymentResponse = restTemplate.postForObject("http://PAYMENT-SERVICE/payment/doPayment", payment, Payment.class);
 
         response = paymentResponse.getPaymentStatus().equals("success") ? "payment processing successful, order placed" : "there is a failure in payment api, order added to cart";
 
