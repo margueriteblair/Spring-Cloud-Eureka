@@ -21,7 +21,7 @@ public class PaymentController {
     }
 
     @GetMapping("/{orderId}")
-    public Payment findPaymentHistoryByOrderId(int orderId) {
+    public Payment findPaymentHistoryByOrderId(@PathVariable int orderId) {
         return paymentService.findPaymentHistoryByOrderId(orderId);
     }
 
