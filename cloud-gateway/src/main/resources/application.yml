@@ -20,8 +20,8 @@ spring:
           filters:
             - name: CircuitBreaker
               args:
-                name: order-service
-                fallbackuri: orderFallBack
+                name: payment-service
+                fallbackuri: paymentFallBack
 
 
 eureka:
