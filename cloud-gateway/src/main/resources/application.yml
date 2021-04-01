@@ -12,7 +12,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: order-service
-                fallbackuri: orderFallBack
+                fallbackuri: forward:/orderFallBack
         - id: payment-service
           uri: lb://PAYMENT-SERVICE
           predicates:
@@ -21,7 +21,7 @@ spring:
             - name: CircuitBreaker
               args:
                 name: payment-service
-                fallbackuri: paymentFallBack
+                fallbackuri: forward:/paymentFallBack
 
 
 eureka:
@@ -34,3 +34,16 @@ eureka:
     hostname: localhost
 server:
   port: 8989
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 5000
